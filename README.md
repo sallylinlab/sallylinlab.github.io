@@ -123,9 +123,9 @@ publications 頁面分為 Journal 及 Conference 兩個 section，<br>
 
 
 ## 更新 Pics 頁面
-Pics 頁面分為 頂部照片輪轉、論文發表、Contests、Activities 四個 section，<br>
+Pics 頁面分為 頂部照片輪轉、論文發表、CONTESTS、ACTIVITIES 四個 section，<br>
 
-### 頂部照片輪轉
+### 更新頂部照片輪轉section
 在 pics.html 中找到以下程式碼：
 ```
 <section id="TopCarousel" class="page-section bg-primary pb-5">
@@ -139,11 +139,81 @@ Pics 頁面分為 頂部照片輪轉、論文發表、Contests、Activities 四�
 其中要改的參數為 data-bs-slide-to 以及 aria-label，<br>
 接著在\<div class="carousel-inner" style="border-radius: 5%;"> 中新增以下程式碼：
 ```
-<div class="carousel-item active" >
-  <img src="assets/img/pics/activities/2024_chrismas1.jpg" class="img-fluid w-100 h-100" alt="...">
+<div class="carousel-item" >
+  <img src="照片位置" class="img-fluid w-100 h-100" alt="...">
   <div class="carousel-caption d-none d-md-block">
-    <h5>2024 聖誕交換禮物</h5>  
+    <h5>標題</h5>  
   </div>
+</div>
+```
+請注意：第一張照片有一個預設的 class: active!
+
+### 更新論文發表、CONTESTS、ACTIVITIES section
+論文發表、CONTESTS、ACTIVITIES 這三個 section 的更新方式大同小異，<br>
+以下使用論文發表作為範例。
+
+在 pics.html 中找到以下程式碼：
+```
+<section id="PublicationsPresent" class="page-section bg-primary pt-0 pb-5">
+  <div class=" container text-center">
+      <h1>論文發表</h1>
+      <div class="owl-carousel owl-theme" id="paperpics">
+```
+接下來分為兩個不同的做法，<br>
+#### 1. 需要彈出式視窗說明活動內容：
+新增以下程式碼：
+```
+<div class="item card slider ">
+  <div class="hovereffect">
+    <img class="img-responsive" src="圖片位置" />
+    <div class="overlay">
+      <h2>標題</h2>
+      <a class="info" type="button" data-bs-toggle="modal" data-bs-target="自定義modal名稱">Click!</a>
+    </div>
+  </div>
+  <h4>標題</h4>
+  <p class="text-muted mb-2">地點</p>
+</div>
+```
+並且在 code 中尋找 \<!-- modal --> 這個註解，<br>
+在以下新增彈出式視窗的內容，以下為範例：
+```
+<!-- 自定義modal名稱 modal -->
+<div class="modal fade" id="自定義modal名稱" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">活動標題</h3>
+      </div>
+      <div class="modal-body">
+        <div class="text-center container">
+          <h4>內容</h4>
+          <img src="圖片位置">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+```
+根據不同需求可在彈出式視窗中自訂不同的樣式，<br>
+其他的範例請參考 pics.html 中其他 modal。<br>
+
+#### 2. 不需要彈出式視窗
+與前者最大差距為不需要新增 modal，<br>
+並且在鼠標移過去後不需要顯示 Click! 按鈕，範例程式如下：
+```
+<div class="item card slider">
+  <div class="hovereffect">
+    <img class="img-responsive" src="照片位置" />
+    <div class="overlay">
+      <h2>標題</h2>
+    </div>
+  </div>
+  <h4>標題</h4>
+  <p class="text-muted mb-2">地點</p>
 </div>
 ```
 
