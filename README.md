@@ -123,8 +123,29 @@ publications 頁面分為 Journal 及 Conference 兩個 section，<br>
 
 
 ## 更新 Pics 頁面
+Pics 頁面分為 頂部照片輪轉、論文發表、Contests、Activities 四個 section，<br>
 
-
+### 頂部照片輪轉
+在 pics.html 中找到以下程式碼：
+```
+<section id="TopCarousel" class="page-section bg-primary pb-5">
+```
+裡面包為頂部照片輪轉的內容，<br>
+若要新增照片，則找到 class="carousel-indicators" 的區塊，<br>
+新增一個 button，範例程式如下：
+```
+<button type="button" data-bs-target="#picscarousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
+```
+其中要改的參數為 data-bs-slide-to 以及 aria-label，<br>
+接著在\<div class="carousel-inner" style="border-radius: 5%;"> 中新增以下程式碼：
+```
+<div class="carousel-item active" >
+  <img src="assets/img/pics/activities/2024_chrismas1.jpg" class="img-fluid w-100 h-100" alt="...">
+  <div class="carousel-caption d-none d-md-block">
+    <h5>2024 聖誕交換禮物</h5>  
+  </div>
+</div>
+```
 
 ## 更新 Members 頁面
 
