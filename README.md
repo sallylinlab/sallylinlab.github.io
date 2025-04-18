@@ -218,7 +218,20 @@ Pics 頁面分為 頂部照片輪轉、論文發表、CONTESTS、ACTIVITIES 四�
 ```
 
 ## 更新 Members 頁面
-
+僅一section，分為 Ph.D.、MASTER STUDENTS、ALUMNI、UNGRADUATED STUDENTS 四個區塊，<br>
+分別找到對應區塊後，在 \<div class="row"> 中新增以下程式碼：
+```
+<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6  text-center mt-5">
+  <img class="img-fluid rounded-circle" src="照片位置" style="width: 80%;"/>
+  <h3 class="mt-2 mb-0">名稱</h3>
+  <p class="mb-0">在學日期</p>
+  <p class="text-muted mb-2">電子郵件</p>
+  <a class="btn btn-dark btn-social rounded-circle" href="GITHUB連結"><i class="fab fa-github"></i></a>
+  <a class="btn btn-light btn-social rounded-circle" href="LINKEDIN連結"><i class="fab fa-linkedin-in"></i></a>
+</div>
+```
+注意！Ph.D.、MASTER STUDENTS、ALUMNI、UNGRADUATED STUDENTS各自有不同的縮放方式，<br>
+因此 div 的 class 會有所不同，請選擇相同的學位的區塊複製並修改！
 
 
 
