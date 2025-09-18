@@ -10999,3 +10999,65 @@ header.masthead h1, header.masthead .h1 {
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption, #portfolio .container-sm .portfolio-box:hover .portfolio-box-caption, #portfolio .container-md .portfolio-box:hover .portfolio-box-caption, #portfolio .container-lg .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xl .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xxl .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
 }
+
+
+
+/* 把index.html的背景從靜態變成動態的 */
+/* 讓 masthead 改為承載輪播，不再用單張背景 */
+header.masthead {
+  position: relative;
+  background: none !important;   /* 把原本 url(...) 的背景拿掉，改由輪播顯示 */
+  min-height: auto;             /* 小螢幕不滿版，桌機≥992px滿版*/
+}
+
+/* 只在 ≥992px 才做滿版（沿用主題邏輯） */
+@media (min-width: 992px) {
+  header.masthead { min-height: 100vh; } /* 或乾脆不用這行，讓主題的 height:100vh 生效即可 */
+}
+
+/* 輪播鋪滿整個 header（絕對定位） */
+header.masthead .carousel,
+header.masthead .carousel-inner {
+  position: absolute;
+  inset: 0;         /* top/right/bottom/left = 0 */
+  width: 100%;
+  height: 100%;
+}
+
+/* 每張投影片也要吃到 100% 高度 */
+header.masthead .carousel-item {
+  height: 100%;
+}
+
+/* 讓圖片裁切填滿，不變形、不留白 */
+header.masthead .carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 暗化遮罩：把你原本的深色漸層搬到覆蓋層 */
+header.masthead::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(92, 77, 66, 0.8) 0%,
+    rgba(92, 77, 66, 0.8) 100%
+  );
+}
+
+/* 內容浮在遮罩上方 */
+header.masthead > .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* 重要：只在首頁 hero 解除主題預設的 600px 上限 */
+header.masthead .carousel,
+header.masthead .carousel-inner,
+header.masthead .carousel-item {
+  max-height: none !important;
+}
